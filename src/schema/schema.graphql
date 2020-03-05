@@ -1,0 +1,18 @@
+# Definição do Schema, tipo de retorno para a rota users -> User (dentro da requisição na API)
+type User {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+# Quando quero buscar alguma informação
+type Query {
+    # a rota /users retorna obrigatoriamente um usuário, e também obrigatóriamente pelo menos um array para o retorno, nunca retornar null
+    users: [User!]!
+    user(id: ID): User
+}
+
+# Quando quero criar, alterar ou deletar alguma informação
+type Mutation {
+    createUser(name: String!, email: String!): User
+}
